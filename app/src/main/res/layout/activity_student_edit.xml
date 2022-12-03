@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/student_edit_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.StudentEditActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/student_edit_form"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/student_edit_avatar"
+                android:layout_width="141dp"
+                android:layout_height="136dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/user_avatar" />
+
+            <TextView
+                android:id="@+id/student_edit_address_label"
+                android:layout_width="90dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="16dp"
+                android:text="Address:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="@+id/student_edit_phone_number_label"
+                app:layout_constraintTop_toBottomOf="@+id/student_edit_phone_number_label" />
+
+            <TextView
+                android:id="@+id/student_edit_phone_number_label"
+                android:layout_width="90dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="16dp"
+                android:text="Phone:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="@+id/student_edit_id_label"
+                app:layout_constraintTop_toBottomOf="@+id/student_edit_id_label" />
+
+            <TextView
+                android:id="@+id/student_edit_id_label"
+                android:layout_width="90dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="16dp"
+                android:text="ID:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="@+id/student_edit_name_label"
+                app:layout_constraintTop_toBottomOf="@+id/student_edit_name_label" />
+
+            <TextView
+                android:id="@+id/student_edit_name_label"
+                android:layout_width="90dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="56dp"
+                android:text="Name:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="@+id/student_edit_avatar"
+                app:layout_constraintTop_toBottomOf="@+id/student_edit_avatar" />
+
+            <EditText
+                android:id="@+id/student_edit_phone_number_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:hint="Phone"
+                android:inputType="phone"
+                app:layout_constraintBaseline_toBaselineOf="@+id/student_edit_phone_number_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/student_edit_phone_number_label" />
+
+            <EditText
+                android:id="@+id/student_edit_address_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:hint="Address"
+                android:inputType="textPostalAddress"
+                app:layout_constraintBaseline_toBaselineOf="@+id/student_edit_address_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/student_edit_address_label" />
+
+            <CheckBox
+                android:id="@+id/student_edit_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/student_edit_address_label"
+                app:layout_constraintTop_toBottomOf="@+id/student_edit_address_label" />
+
+            <EditText
+                android:id="@+id/student_edit_id_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:focusable="true"
+                android:hint="ID"
+                android:inputType="number"
+                app:layout_constraintBaseline_toBaselineOf="@+id/student_edit_id_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/student_edit_id_label" />
+
+            <EditText
+                android:id="@+id/student_edit_name_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="Name"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                app:layout_constraintBaseline_toBaselineOf="@+id/student_edit_name_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/student_edit_name_label" />
+
+            <Button
+                android:id="@+id/student_edit_delete_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/design_default_color_error"
+                android:text="Delete"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/student_edit_save_button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/student_edit_cancel_button"
+                app:layout_constraintTop_toBottomOf="@+id/student_edit_checkbox"
+                app:layout_constraintVertical_bias="1.0"
+                tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/student_edit_cancel_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/material_dynamic_secondary70"
+                android:text="Cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/student_edit_delete_button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/student_edit_checkbox"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/student_edit_save_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/design_default_color_primary"
+                android:text="Save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/student_edit_delete_button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
