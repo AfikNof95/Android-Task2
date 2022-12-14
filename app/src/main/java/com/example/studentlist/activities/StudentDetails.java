@@ -22,7 +22,12 @@ public class StudentDetails extends AppCompatActivity {
         @Override
         public void onActivityResult(ActivityResult result) {
             if (result != null && result.getResultCode() == RESULT_OK) {
-                if (result.getData().getStringExtra("ACTION").equals("DELETE")) {
+                if (result.getData() != null && result.getData().getBooleanExtra("SHOULD_UPDATE",false)) {
+                    Intent data = new Intent();
+                    data.putExtra("SHOULD_UPDATE", true);
+                    setResult(RESULT_OK, data);
+                }
+                if (result.getData().getStringExtra("ACTION") != null && result.getData().getStringExtra("ACTION").equals("DELETE")) {
                     finish();
                 }
             }

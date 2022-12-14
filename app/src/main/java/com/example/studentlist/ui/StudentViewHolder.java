@@ -32,12 +32,21 @@ public class StudentViewHolder extends RecyclerView.ViewHolder {
                 listener.onItemClick(pos);
             }
         });
-}
+    }
 
     public void bind(@NonNull Student st, int pos) {
         studentNameTv.setText(st.getName());
         studentIDTv.setText(st.getID());
         studentCheckbox.setChecked(st.getIsChecked());
         studentCheckbox.setTag(pos);
+
+        studentCheckbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                st.setIsChecked(studentCheckbox.isChecked());
+            }
+        });
+
+
     }
 }

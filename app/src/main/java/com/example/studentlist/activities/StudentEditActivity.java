@@ -31,6 +31,7 @@ public class StudentEditActivity extends AppCompatActivity {
                 Model.instance().removeStudent(studentIndex);
                 Intent data = new Intent();
                 data.putExtra("ACTION", "DELETE");
+                data.putExtra("SHOULD_UPDATE", true);
                 setResult(RESULT_OK, data);
                 finish();
             });
@@ -68,8 +69,9 @@ public class StudentEditActivity extends AppCompatActivity {
             }else{
                 Model.instance().editStudent(studentIndex, newStudentData);
             }
-
-
+            Intent data = new Intent();
+            data.putExtra("SHOULD_UPDATE", true);
+            setResult(RESULT_OK, data);
             finish();
         });
 

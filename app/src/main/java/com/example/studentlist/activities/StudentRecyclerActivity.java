@@ -1,5 +1,9 @@
 package com.example.studentlist.activities;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +23,20 @@ import java.util.List;
 public class StudentRecyclerActivity extends AppCompatActivity {
     List<Student> students;
     StudentRecyclerAdapter adapter;
+    ActivityResultLauncher<Intent> startForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if (result != null && result.getResultCode() == RESULT_OK) {
+                if (result.getData() != null && result.getData().getBooleanExtra("SHOULD_UPDATE",false)) {
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        }
+    });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.studentlist_recycler);
-        Model.instance().createMockData();
         students = Model.instance().getAllStudents();
 
         RecyclerView list = findViewById(R.id.studentlist_recycled);
@@ -36,22 +49,17 @@ public class StudentRecyclerActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(pos ->{
             Intent studentDetailsIntent = new Intent(this, StudentDetails.class);
             studentDetailsIntent.putExtra("studentIndex",pos);
-            startActivity(studentDetailsIntent);
+            startForResult.launch(studentDetailsIntent);
         });
 
         FloatingActionButton addStudentButton = findViewById(R.id.studentlist_new_student);
         addStudentButton.setOnClickListener(view -> {
             Intent newStudentActivity = new Intent(this, StudentEditActivity.class);
-            startActivity(newStudentActivity);
+            startForResult.launch(newStudentActivity);
         });
 
     }
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-        adapter.notifyDataSetChanged();
-    }
 
 
 

@@ -7,6 +7,7 @@ public class Model {
     private static final Model _instance = new Model();
     List<Student> students = new LinkedList<>();
     private Model() {
+        createMockData();
     }
 
     public static Model instance() {
